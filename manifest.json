@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Notificator",
+    "version": "1.0.0",
+    "description": "An extension for creating browser notifications",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "service_worker.js"
+    },
+    "icons": {
+      "48": "images/notification.png"
+    },
+    "permissions": [
+        "storage",
+        "notifications"
+    ]
+  }
