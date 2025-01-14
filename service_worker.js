@@ -30,7 +30,6 @@ function scheduleNotification(notification) {
   const delay = notification.time - Date.now();
   if (delay > 0) {
       setTimeout(() => {
-          // Show the notification
           chrome.notifications.create({
               type: "basic",
               iconUrl: "images/notification.png",
@@ -43,10 +42,8 @@ function scheduleNotification(notification) {
               const notifications = result.notifications.map((n) =>
                   n.time === notification.time ? { ...n, fired: true } : n
               );
-              chrome.storage.local.set({ notifications });
+              chrome.storage.local.set({ notifications }, () => updateNotificationsCounter());
           });
-
-          updateNotificationsCounter();
       }, delay);
   }
 }
